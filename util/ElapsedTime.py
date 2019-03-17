@@ -14,7 +14,7 @@ class ElapsedTime(object):
 		"""
 		self.end = time.time()
 		return self.end - self.begin
-    
+
 	def printTime(self):
 		"""
 		Prints duration since objectcreation.
