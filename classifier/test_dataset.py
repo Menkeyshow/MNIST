@@ -1,15 +1,19 @@
 #%%
 """ https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d 
 	"""
+
+import os
+print(os.getcwd())  # Prints the current working directory
+
 import keras
 import matplotlib.pyplot as plt
-from util.ElapsedTime import ElapsedTime
+import classifier.util.ElapsedTime as ElapsedTime
 
 #Load Dataset
 (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
 if __name__ == "__main__":
-    Timer = ElapsedTime()
+    Timer = ElapsedTime.ElapsedTime()
     image_index = 54050 # You may select anything up to 60,000
     print(y_train[image_index]) # The label is 8
     plt.imshow(x_train[image_index], cmap='Greys')
