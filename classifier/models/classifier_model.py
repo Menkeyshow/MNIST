@@ -41,6 +41,7 @@ class model_object(object):
 
         self.model = Model(inputs=inputLayer, outputs=predictions)
         #welche Loss Fucntion????? wtf nur sparse_categorical funktioniert...
+        #https://jovianlin.io/cat-crossentropy-vs-sparse-cat-crossentropy/
         self.model.compile(optimizer=self.optimizer,loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     def fit(self, train, label, epochs=10):
