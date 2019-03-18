@@ -10,7 +10,7 @@ class model_object(object):
     """
     builds a model object
     """
-    def __init__(self, optimizer='Adam', inputshape=(26,26,1)):
+    def __init__(self, optimizer='Adam', inputshape=(28,28,1)):
         self.optimizer_choice = optimizer
         self.inputshape = inputshape
 
