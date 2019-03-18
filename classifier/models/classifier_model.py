@@ -45,5 +45,8 @@ class model_object(object):
 
     def fit(self, train, label, epochs=10):
         self.model.fit(train, label, epochs=epochs)
+
+    def evaluate(self, test, label):
+        self.model.evaluate(test, label)
 if __name__ == "__main__":
     model = model_object()
