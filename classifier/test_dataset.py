@@ -21,7 +21,7 @@ x_test = x_test.reshape(x_test.shape[0], x_test.shape[1], x_test.shape[2], 1)
 if __name__ == "__main__":
     Timer = ElapsedTime.ElapsedTime()
     print(x_train[0].shape)
-    model = classifier_model.model_object('Adam', inputshape=x_train.shape[0])
+    model = classifier_model.model_object('Adam', inputshape=(28,28,1))
     model.model.fit(x=x_train, y=y_train, epochs=10)
     image_index = 54050 # You may select anything up to 60,000
     print(y_train[image_index]) # The label is 8
