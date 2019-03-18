@@ -34,13 +34,14 @@ class model_object(object):
 
         x = Conv2D(16, 3, **conf)(x)
         x = BatchNormalization()(x)
-
+        x = Flatten()(x)
         predictions = Dense(10, activation="relu")(x)
         print(predictions)
 
 
         self.model = Model(inputs=inputLayer, outputs=predictions)
-        self.model.compile(optimizer=self.optimizer,loss='binary_crossentropy', metrics=['accuracy'])
+        #welche Loss Fucntion????? wtf nur sparse_categorical funktioniert...
+        self.model.compile(optimizer=self.optimizer,loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     def fit(self, train, label, epochs=10):
         self.model.fit(train, label, epochs=epochs)
