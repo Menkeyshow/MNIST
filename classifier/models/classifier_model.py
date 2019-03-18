@@ -1,6 +1,6 @@
 #%%
 
-from keras.layers import Flatten, Reshape, Input, Conv2D, BatchNormalization, UpSampling2D, MaxPooling2D
+from keras.layers import Dense, Flatten, Reshape, Input, Conv2D, BatchNormalization, UpSampling2D, MaxPooling2D
 from keras.models import Model
 from keras.optimizers import Adadelta,Adam,SGD
 
@@ -35,12 +35,14 @@ class model_object(object):
         x = Conv2D(16, 3, **conf)(x)
         x = BatchNormalization()(x)
 
-        x = Conv2D(1, 3, padding="same", activation="sigmoid")(x)
-        predictions = Reshape((-1,))(x)
+        predictions = Dense(10, activation="relu")(x)
+        print(predictions)
 
 
         self.model = Model(inputs=inputLayer, outputs=predictions)
         self.model.compile(optimizer=self.optimizer,loss='binary_crossentropy', metrics=['accuracy'])
 
+    def fit(self, train, label, epochs=10):
+        self.model.fit(train, label, epochs=epochs)
 if __name__ == "__main__":
     model = model_object()
