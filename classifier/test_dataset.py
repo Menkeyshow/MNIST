@@ -19,6 +19,7 @@ if __name__ == "__main__":
     Timer = ElapsedTime.ElapsedTime()
     print(x_train[0].shape)
     model = classifier_model.model_object('Adam')
+    model.model.fit(x=x_train, y=y_train, epochs=10)
     image_index = 54050 # You may select anything up to 60,000
     print(y_train[image_index]) # The label is 8
     plt.imshow(x_train[image_index], cmap='Greys')
