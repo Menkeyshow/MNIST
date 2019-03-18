@@ -9,6 +9,7 @@ print('Make sure to use right WD:',os.getcwd())  # Prints the current working di
 
 import keras
 import matplotlib.pyplot as plt
+import numpy as np
 import classifier.util.ElapsedTime as ElapsedTime
 import classifier.models.classifier_model as classifier_model
 
@@ -22,7 +23,7 @@ x_test = x_test_pre.reshape(x_test_pre.shape[0], x_test_pre.shape[1], x_test_pre
 if __name__ == "__main__":
     Timer = ElapsedTime.ElapsedTime()
     model = classifier_model.model_object('Adam', inputshape=(28,28,1))
-    model.model.fit(x=x_train, y=y_train, epochs=10)
+    #model.model.fit(x=x_train, y=y_train, epochs=10)
     model.model.evaluate(x=x_test, y=y_test)
     print('Trainingsduration:')
     Timer.printTime()
@@ -30,8 +31,9 @@ if __name__ == "__main__":
     #Test Result :D
     print('Die Zahl ist: ', y_train[54050])
     plt.imshow(x_train_pre[54050], cmap='Greys')
-    zahl = model.model.predict(y_train[54050].reshape(1, 28, 28, 1))
+    zahl = model.model.predict(x_train[54050].reshape(1, 28, 28, 1))
     plt.show()
-    print('Netz sagt: ', zahl)
+    print(zahl)
+    print('Netz sagt: ', np.argmax(zahl))
 
     
