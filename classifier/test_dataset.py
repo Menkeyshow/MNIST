@@ -13,10 +13,10 @@ import classifier.util.ElapsedTime as ElapsedTime
 import classifier.models.classifier_model as classifier_model
 
 #Load Dataset 
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+(x_train_pre, y_train), (x_test_pre, y_test) = keras.datasets.mnist.load_data()
 #3dim ==> 4dim
-x_train = x_train.reshape(x_train.shape[0], x_train.shape[1], x_train.shape[2], 1)
-x_test = x_test.reshape(x_test.shape[0], x_test.shape[1], x_test.shape[2], 1)
+x_train = x_train_pre.reshape(x_train_pre.shape[0], x_train_pre.shape[1], x_train_pre.shape[2], 1)
+x_test = x_test_pre.reshape(x_test_pre.shape[0], x_test_pre.shape[1], x_test_pre.shape[2], 1)
 
 
 if __name__ == "__main__":
@@ -28,8 +28,8 @@ if __name__ == "__main__":
     Timer.printTime()
 
     #Test Result :D
-    print(y_train[54050])
-    plt.imshow(x_train[54050], cmap='Greys')
+    print('Die Zahl ist: ', y_train[54050])
+    plt.imshow(x_train_pre[54050], cmap='Greys')
     zahl = model.model.predict(y_train[54050].reshape(1, 28, 28, 1))
     plt.show()
     print('Netz sagt: ', zahl)
