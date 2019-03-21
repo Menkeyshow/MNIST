@@ -1,6 +1,6 @@
 #%%
 
-from keras.layers import Dense, Flatten, Reshape, Input, Conv2D, BatchNormalization, UpSampling2D, MaxPooling2D
+from keras.layers import Dropout, Dense, Flatten, Reshape, Input, Conv2D, BatchNormalization, UpSampling2D, MaxPooling2D
 from keras.models import Model
 from keras.optimizers import Adadelta,Adam,SGD
 
@@ -29,19 +29,20 @@ class model_object(object):
     
         inputLayer = Input(shape=self.inputshape)
         print('Input-Shape: ',inputLayer.shape)
-        x = Conv2D(16, 3, **conf)(inputLayer)
-        x = BatchNormalization()(x)
+        
+        x = Conv2D(28, 3, **conf)(inputLayer)
+        #x = BatchNormalization()(x)
 
-        x = Conv2D(32, 3, **conf)(x)
-        x = BatchNormalization()(x)
+        x = MaxPooling2D(padding="same")(x)
 
-        x = Conv2D(32, 3, **conf)(x)
-        x = BatchNormalization()(x)
-
-        x = Conv2D(16, 3, **conf)(x)
-        x = BatchNormalization()(x)
         x = Flatten()(x)
-        predictions = Dense(10, activation="relu")(x)
+
+        x = Dense(128, activation='relu')(x)
+
+        x = Dropout(rate=0.2)(x)
+
+        predictions = Dense(10, activation="softmax")(x)
+        
         print('Output-Shape: ',predictions.shape)
 
 
