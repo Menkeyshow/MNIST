@@ -14,8 +14,14 @@ class model_object(object):
         self.optimizer_choice = optimizer
         self.inputshape = inputshape
 
+        if(self.optimizer_choice == 'Adadelta'):
+            self.optimizer=Adadelta()
+
         if(self.optimizer_choice == 'Adam'):
             self.optimizer=Adam()
+
+        if(self.optimizer_choice == 'SGD'):
+            self.optimizer=SGD()
         
         conf = dict()
         conf["activation"] = "relu"
