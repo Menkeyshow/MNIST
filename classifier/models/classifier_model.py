@@ -36,7 +36,7 @@ class model_object(object):
         x = BatchNormalization()(x)
         x = Flatten()(x)
         predictions = Dense(10, activation="relu")(x)
-        print(predictions)
+        print('Output-Shape: ',predictions.shape)
 
 
         self.model = Model(inputs=inputLayer, outputs=predictions)
