@@ -20,7 +20,7 @@ class ElapsedTime(object):
 		Prints duration since objectcreation.
 		"""
 		self.end = time.time()
-		print('Dauer: ',self.end - self.begin)
+		print(self.end - self.begin, 'seconds')
 
 if __name__ == "__main__":
 	Timer = ElapsedTime()
