@@ -27,6 +27,7 @@ class model_object(object):
         conf["activation"] = "relu"
         conf["padding"] = "same"
     
+        print('This model has the following Shapes:')
         inputLayer = Input(shape=self.inputshape)
         print('Input-Shape: ',inputLayer.shape)
         
