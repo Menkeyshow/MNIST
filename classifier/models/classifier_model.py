@@ -22,7 +22,7 @@ class model_object(object):
         conf["padding"] = "same"
     
         inputLayer = Input(shape=self.inputshape)
-        print(inputLayer.shape)
+        print('Input-Shape: ',inputLayer.shape)
         x = Conv2D(16, 3, **conf)(inputLayer)
         x = BatchNormalization()(x)
 
