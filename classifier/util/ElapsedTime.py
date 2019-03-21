@@ -8,7 +8,7 @@ class ElapsedTime(object):
 	def __init__(self):
 		self.begin = time.time()
 
-	def giveTime(self):
+	def getTime(self):
 		"""
 		Returns time since objectcreation in seconds.
 		"""
