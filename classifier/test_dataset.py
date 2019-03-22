@@ -3,9 +3,10 @@
 https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d 
 """
 
-import os
-
-print('Make sure to use right WorkingDirectory, currently it is:\n', os.getcwd(), 'it should be: \n ...\\MNIST')  # Prints the current working directory
+import os, sys
+module_path = os.path.abspath(os.getcwd())    
+if module_path not in sys.path:       
+    sys.path.append(module_path)
 
 import keras
 import matplotlib.pyplot as plt
