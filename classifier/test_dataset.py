@@ -4,9 +4,14 @@ https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dat
 """
 
 import os, sys
+
+#for correct imports from "main" directory
 module_path = os.path.abspath(os.getcwd())    
 if module_path not in sys.path:       
     sys.path.append(module_path)
+
+#for Unix/Windows compatible paths
+from pathlib import Path
 
 import keras
 import matplotlib.pyplot as plt
