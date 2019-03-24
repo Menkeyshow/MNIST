@@ -36,8 +36,15 @@ class classifier(object):
         self.x_test = None
         self.y_test = None
 
+        self.weight_path = Path('weights/','%sepochs.h5' % self.epochs)
+
         if(self.do_use_weights):
-            self.model.model.load_weights('weights.h5')
+            try:
+                print('Looking for weight in: ',self.weight_path)
+                self.model.model.load_weights(self.weight_path)
+            except:
+                print('Cant load saved weights, not yet trained?')
+                sys.exit(1)
             print('Loaded saved weights')
     
     def prepare_data(self, x_train, y_train, x_test, y_test, isNormalized=False):
@@ -70,7 +77,10 @@ class classifier(object):
             return
         
         self.model.model.fit(x=self.x_train, y=self.y_train, epochs=self.epochs)
-        self.model.model.save_weights('weights.h5')
+
+        if (self.do_save_weights):
+            self.model.model.save_weights(self.weight_path)
+    
         print('Done training!')
         trainTimer.printTime()
 
